@@ -6,4 +6,5 @@ public class GameType {
      */
     public static int WUZIQI = 0;
     public static int WEIQI = 1;
+    public static int HEIBAIQI = 2;
 }

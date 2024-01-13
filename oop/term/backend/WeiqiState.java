@@ -94,7 +94,7 @@ public class WeiqiState extends ChessState{
          */
         int size = getSize();
         boolean[][] visited = new boolean[size + 1][size + 1];
-            char target = getFlag() == Round.BLACK ? Symbol.BLACK : Symbol.WHITE;
+        char target = getFlag() == Round.BLACK ? Symbol.BLACK : Symbol.WHITE;
         checkNeighbor(board, x - 1, y, visited, target);
         checkNeighbor(board, x, y + 1, visited, target);
         checkNeighbor(board, x + 1, y, visited, target);

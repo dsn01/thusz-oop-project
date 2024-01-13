@@ -97,12 +97,34 @@ public class Manager {
         momentoCareTaker.addMomento(state.save()); // 加入初始状态
     }
 
+    public void saveAll(String path) {
+        momentoCareTaker.save(path);
+        System.out.println("保存回放成功...");
+    }
+
     public void save(String path) {
         /*
             保存当前棋局到指定路径
          */
         momentoCareTaker.getLastMomento().save(path);
-        System.out.println("保存成功...");
+        System.out.println("保存局面成功...");
+    }
+
+    public void replay(String path) {
+        /*
+            回放对局
+         */
+        if (!Utils.isFileOrDirectoryExists(path)) {
+            System.out.println("路径不存在...");
+            return;
+        }
+        momentoCareTaker = (MomentoCareTaker) MomentoCareTaker.read(path);
+        int idx = 1;
+        for (ChessStateMomento momento: momentoCareTaker.getMomentoList()) {
+            System.out.println("======Step " + idx + "======");
+            state.restore(momento);
+            idx += 1;
+        }
     }
 
     public void load(String path) {
